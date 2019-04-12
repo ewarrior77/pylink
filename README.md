@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/square/pylink.svg?branch=master)](https://travis-ci.org/square/pylink)
 
-Python interface for the SEGGER J-Link.
+Python interface for the SEGGER J-Link, with support on Cygwin
 
 
 ## Requirements
