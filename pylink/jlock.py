@@ -12,12 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import psutil
-
 import errno
 import tempfile
 import os
 
+def check_pid(pid):        
+    """ Check For the existence of a unix pid. """
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    else:
+        return True
 
 class JLock(object):
     """Lockfile for accessing a particular J-Link.
@@ -103,7 +109,7 @@ class JLock(object):
 
                 # In the case that the lockfile exists, but the pid does not
                 # correspond to a valid process, remove the file.
-                if not psutil.pid_exists(pid):
+                if not check_pid(pid):
                     os.remove(self.path)
 
             except ValueError as e:

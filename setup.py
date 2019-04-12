@@ -13,16 +13,7 @@
 # limitations under the License.
 
 import sys
-
-# Stub the 'psutil' module that is required by this package in order to enable
-# the main module to be imported.
-try:
-    import psutil
-except ImportError:
-    sys.modules['psutil'] = {}
-
 import pylink
-
 import os
 import setuptools
 import shutil
@@ -255,7 +246,6 @@ setuptools.setup(
 
     # Dependencies.
     install_requires=[
-        'psutil >= 5.2.2',
         'future',
         'six'
     ],
