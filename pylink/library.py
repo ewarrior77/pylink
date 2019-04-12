@@ -348,6 +348,10 @@ class Library(object):
         # This is needed to work around a WindowsError where the file is not
         # being properly cleaned up after exiting the with statement.
         tf.close()
+        if (self._cygwin):
+          #fix the OSError: Exception under cygwin
+          os.system("chmod 777 " + tf.name)
+        #print("jlink temp file ", tf.name, "cygwin ", self._cygwin)
 
         self._temp = tf
         self._lib = ctypes.cdll.LoadLibrary(tf.name)
